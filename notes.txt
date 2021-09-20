@@ -99,6 +99,7 @@ Assignment : Find out the first 20 prime numbers starting from 5
 
 Functions
     - Supports variadic function
+    - supports higher order functions
 
 
 
