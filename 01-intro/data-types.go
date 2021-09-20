@@ -62,8 +62,8 @@ func main() {
 	fmt.Printf("x = %d, y = %d and %s %d\n", x, y, msg, x+y)
 
 	//type conversion
-	var noInt int = 100
+	var noInt int8 = 100
 	var noFloat float64
 	noFloat = float64(noInt)
-	fmt.Println(noInt, noFloat)
+	fmt.Printf("%d %f\n", noInt, noFloat)
 }
