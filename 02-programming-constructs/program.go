@@ -74,12 +74,13 @@ func main() {
 	*/
 
 	score := 18
+	nine := 9
 	switch score {
 	case 0, 1, 2, 3:
 		fmt.Println("Terrible")
 	case 4, 5, 6, 7:
 		fmt.Println("Not Bad")
-	case 8, 9:
+	case 8, nine:
 		fmt.Println("Good")
 	case 10:
 		fmt.Println("Excellent")
