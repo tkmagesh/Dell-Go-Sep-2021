@@ -1,0 +1,69 @@
+Magesh Kuppan
+
+Methodology:
+    Handon Driven
+    No Powerpoints
+
+Schedule
+    Commence    : 10:00
+    Tea Break   : 11:30 (20 mins)
+    Lunch Break : 13:30 (1 Hr)
+    Tea Break   : 16:00 (20 mins)
+    Windup      : 18:00
+
+About You:
+    1. Name
+    2. Total Experience
+    3. Primary Skillset
+    4. Experience in Golang (if any)
+
+
+Why Go?
+    1. Best of C++ and Python
+    2. Better Security features
+    3. Memory Handling support
+    4. Restful services & microservices (SDK API)
+    5. Testability
+    6. Ease of concurrency
+    7. Ease of deployment
+    8. Statically compiled
+    9. More intuitive syntax
+    10. Ease of implementing better practices
+
+
+    1. compiled
+    2. Memory management
+    3. Performance comparable to 'C'
+    4. Secured (No Pointer arithmetic)
+
+    1. Simplicity
+        for, if else, switch case, function, var (only 25 keywords)
+        1. No classes (only structs & functions)
+        2. No inheritance (only composition)
+        3. No exceptions (only errors)
+        4. No access modifiers
+        5. No generics
+
+    2. Built for Concurrency
+        goroutines (functions executed concurrently)
+        1. Built in the language 
+            go keyword, 
+            channel data type
+            select construct
+            <- operator (channel operations)
+        2. 1000s of go routines in one OS thread
+        3. 2 KB of memory per go routine
+        4. Built in scheduler
+
+    3. Ease of deployment
+        1. Single binary
+        2. No runtime dependencies (VM)
+        
+
+
+        
+          
+
+
+
+
