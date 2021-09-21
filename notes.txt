@@ -120,3 +120,39 @@ Composite Types
         Variable size
         Accessible by key
         Use the delete() function to remove elements from the map
+
+Modularity
+    Modules
+    Packages
+
+    Before go 1.13
+        $GOPATH
+            /bin
+            
+            /pkg
+
+            /src
+                github.com
+                    tkmagesh
+                        app1
+                            main.go
+                                import "github.com/tkmagesh/app1/calculator"
+                            calcualtor
+                                calc.go
+
+                        app2
+
+To create a module
+    go mod init myapp
+        -> creates a module named myapp (go.mod)
+
+To use third party modules
+    go get github.com/fatih/color
+
+    The source code for github.com/fatih/color is in $GOPATH/pkg/github.com/fatih/color
+
+    go mod tidy
+        updating the go.mod file to reflect the current state of the module
+
+    go mod vendor
+        copies the source code for the modules into the <app>/vendor directory
