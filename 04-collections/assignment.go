@@ -20,7 +20,7 @@ func main() {
 func getWordsCountBySize(words []string) map[int]int {
 	counts := make(map[int]int)
 	for _, word := range words {
-		counts[len(word)] += 1
+		counts[len(word)]++
 	}
 	return counts
 }
