@@ -107,6 +107,16 @@ Composite Types
         Collection of data of the same type
         Fixed size
         Indexed (starts from 0)
-    
+
     2. Slice
+        Collection of data of the same type
+        Variable size
+        Indexed (starts from 0)
+        Pointer to an underlying array
+        Use the append() function to add elements to the slice
+
     3. Map
+        Collection of key-value pairs
+        Variable size
+        Accessible by key
+        Use the delete() function to remove elements from the map
