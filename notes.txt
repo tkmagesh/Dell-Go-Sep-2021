@@ -102,4 +102,11 @@ Functions
     - supports higher order functions
 
 
-
+Composite Types
+    1. Array
+        Collection of data of the same type
+        Fixed size
+        Indexed (starts from 0)
+    
+    2. Slice
+    3. Map
