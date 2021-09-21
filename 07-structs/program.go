@@ -3,11 +3,16 @@ package main
 import "fmt"
 
 type Product struct {
-	Id       int
+	Id              int
+	Name            string
+	Units           int
+	Cost            float64
+	ProductCategory *Category
+}
+
+type Category struct {
 	Name     string
-	Units    int
-	Cost     float64
-	Category string
+	Seasonal bool
 }
 
 func main() {
@@ -35,6 +40,16 @@ func main() {
 		fmt.Println(p)
 	*/
 
-	var p *Product = &Product{Id: 101, Name: "MacBook Pro", Units: 2, Cost: 12500, Category: "Computers"}
-	fmt.Println(p)
+	//var p *Product = &Product{Id: 101, Name: "MacBook Pro", Units: 2, Cost: 12500, ProductCategory: &Category{Name: "Computers", Seasonal: false}}
+	var p *Product = &Product{101, "Macbook Pro", 2, 12500, &Category{"Computers", false}}
+	fmt.Printf("%#v\n", p)
+	fmt.Println(p.ProductCategory.Name)
+
+	fmt.Println("Applying discount of 10%")
+	applyDiscount(p, 10)
+	fmt.Printf("%#v\n", p)
+}
+
+func applyDiscount(p *Product, discount int) {
+	p.Cost = p.Cost * ((100 - float64(discount)) / 100)
 }
