@@ -24,6 +24,19 @@ type PerishableProduct struct {
 	Expiry string
 }
 
+func NewPerishableProduct(id int, name string, units int, cost float64, category string, expiry string) *PerishableProduct {
+	return &PerishableProduct{
+		Product: Product{
+			Id:       id,
+			Name:     name,
+			Units:    units,
+			Cost:     cost,
+			Category: category,
+		},
+		Expiry: expiry,
+	}
+}
+
 func main() {
 	//Ver 1.0
 	/*
@@ -45,7 +58,7 @@ func main() {
 	*/
 
 	//Ver 2.0
-	p := PerishableProduct{
+	/* p := PerishableProduct{
 		Product: Product{
 			Id:       1,
 			Name:     "Cake",
@@ -54,7 +67,7 @@ func main() {
 			Category: "Confectionary",
 		},
 		Expiry: "Dec 1, 2021",
-	}
+	} */
 
 	// println(p.Product.Name)
 	// println(p.Product.Units)
@@ -62,6 +75,7 @@ func main() {
 	// println(p.Product.Category)
 	// println(p.Expiry)
 
+	p := NewPerishableProduct(1, "Cake", 2, 1.50, "Confectionary", "Dec 1, 2021")
 	println(p.Name)
 	println(p.Units)
 	println(p.Cost)
