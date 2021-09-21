@@ -156,3 +156,13 @@ To use third party modules
 
     go mod vendor
         copies the source code for the modules into the <app>/vendor directory
+
+
+Methods
+    Are function with receivers
+    the receivers can be "value" or "pointers"
+    can be invoked with value or pointer references
+    can be created only for local types (type within the same package)
+    can access methods belong to the "composed" Types
+    
+Type alias

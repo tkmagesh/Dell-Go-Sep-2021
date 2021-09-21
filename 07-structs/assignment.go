@@ -51,10 +51,15 @@ func main() {
 	fmt.Println("Are all the products stationary products ? : ", All(products, stationaryProductPredicate))
 
 }
+
+func FormatProduct(p Product) string {
+	return fmt.Sprintf("%d\t %s\t\t %.2f\t %d\t %s\n", p.Id, p.Name, p.Cost, p.Units, p.Category)
+}
+
 func Format(products []Product) string {
 	result := ""
 	for _, p := range products {
-		result += fmt.Sprintf("%d\t %s\t\t %.2f\t %d\t %s\n", p.Id, p.Name, p.Cost, p.Units, p.Category)
+		result += FormatProduct(p)
 	}
 	return result
 }
