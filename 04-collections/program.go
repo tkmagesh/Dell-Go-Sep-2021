@@ -108,4 +108,5 @@ func main() {
 		fmt.Println("Mouse is not in the map")
 	}
 	fmt.Println(rank)
+
 }
