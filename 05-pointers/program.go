@@ -13,10 +13,10 @@ func main() {
 	fmt.Println(n)
 
 	x, y := 10, 20
-	swap( /*  */ )
+	swap(&x, &y)
 	fmt.Println(x, y)
 }
 
-func swap() {
-
+func swap(x, y *int) {
+	*x, *y = *y, *x
 }
