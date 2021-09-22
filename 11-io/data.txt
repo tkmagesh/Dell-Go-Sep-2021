@@ -1,0 +1,1 @@
+this is a sample text with numbers like 123344667 and special characters like &*^$#@&()&^. The alphareader is expected to filter all the numbers & special characters and return the alphabets only.
