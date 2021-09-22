@@ -166,3 +166,22 @@ Methods
     can access methods belong to the "composed" Types
     
 Type alias
+
+
+Methods Assignment
+    1. create a module for the application
+    2. create the following packages
+        model
+            product struct
+            methods
+                format
+                applyDiscount
+        collection
+            products type
+            methods
+                format
+                filter
+                indexOf
+                includes
+                any
+                all
