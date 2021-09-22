@@ -13,6 +13,11 @@ func (c Circle) Area() float64 {
 	return math.Pi * c.Radius * c.Radius
 }
 
+//implementing the fmt.Stringer interface
+func (c Circle) String() string {
+	return fmt.Sprintf("Circle: radius = %f", c.Radius)
+}
+
 func (c Circle) Perimeter() float64 {
 	return math.Pi * c.Radius * 2
 }
@@ -28,6 +33,10 @@ func (r Rectange) Area() float64 {
 
 func (r Rectange) Perimeter() float64 {
 	return 2 * (r.Width + r.Height)
+}
+
+func (r Rectange) String() string {
+	return fmt.Sprintf("Rectange: width = %f, height = %f", r.Width, r.Height)
 }
 
 type ShapeWithArea interface {
@@ -69,6 +78,7 @@ func main() {
 		printArea(c)
 		PrintPerimeter(c)
 	*/
+	fmt.Println(c)
 	printShape(c)
 
 	r := Rectange{Width: 10, Height: 5}
@@ -76,5 +86,6 @@ func main() {
 		printArea(r)
 		PrintPerimeter(r)
 	*/
+	fmt.Println(r)
 	printShape(r)
 }

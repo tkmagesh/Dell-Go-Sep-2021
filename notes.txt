@@ -185,3 +185,8 @@ Methods Assignment
                 includes
                 any
                 all
+
+
+Interfaces Assignment
+    Create a sort method in the products collection using which the user should be able to sort the collection by ANY attribute
+    IMPORTANT: use the sort.Sort() API
