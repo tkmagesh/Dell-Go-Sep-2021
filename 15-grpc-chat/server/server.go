@@ -28,6 +28,7 @@ type Connection struct {
 
 type Server struct {
 	Connection []*Connection
+	proto.UnimplementedBroadcastServer
 }
 
 func (s *Server) CreateStream(pconn *proto.Connect, stream proto.Broadcast_CreateStreamServer) error {
@@ -80,7 +81,7 @@ func (s *Server) BroadcastMessage(ctx context.Context, msg *proto.Message) (*pro
 func main() {
 	var connections []*Connection
 
-	server := &Server{connections}
+	server := &Server{Connection: connections}
 
 	grpcServer := grpc.NewServer()
 	listener, err := net.Listen("tcp", ":8085")
