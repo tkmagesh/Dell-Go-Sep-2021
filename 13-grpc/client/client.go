@@ -20,7 +20,8 @@ func main() {
 	clientConn := proto.NewAppServiceClient(client)
 	//doRequestResponse(clientConn)
 	//doClientStreaming(clientConn)
-	doServerStreaming(clientConn)
+	//doServerStreaming(clientConn)
+	doBiDiStreaming(clientConn)
 }
 
 func doRequestResponse(clientConn proto.AppServiceClient) {
@@ -81,4 +82,62 @@ func doServerStreaming(clientConn proto.AppServiceClient) {
 		}
 		log.Println("Prime number received : ", res.GetResult())
 	}
+}
+
+func doBiDiStreaming(clientConn proto.AppServiceClient) {
+	data := []*proto.Greeting{
+		&proto.Greeting{
+			FirstName: "Magesh",
+			LastName:  "Kuppan",
+		},
+		&proto.Greeting{
+			FirstName: "Ramesh",
+			LastName:  "Jayaraman",
+		},
+		&proto.Greeting{
+			FirstName: "Suresh",
+			LastName:  "Kannan",
+		},
+		&proto.Greeting{
+			FirstName: "Rajesh",
+			LastName:  "Pandit",
+		},
+		&proto.Greeting{
+			FirstName: "Dinesh",
+			LastName:  "Kumar",
+		},
+	}
+	stream, err := clientConn.Greet(context.Background())
+	if err != nil {
+		log.Fatalln(err)
+	}
+	go func() {
+		for _, greeting := range data {
+			time.Sleep(400 * time.Millisecond)
+			log.Println("Sending request : ", greeting.FirstName)
+			req := &proto.GreetRequest{
+				Greeting: greeting,
+			}
+			if err := stream.Send(req); err != nil {
+				log.Fatalln(err)
+			}
+		}
+		stream.CloseSend()
+	}()
+	done := make(chan bool)
+	go func() {
+		for {
+			res, err := stream.Recv()
+			if err == io.EOF {
+				log.Println("All greetings received")
+				done <- true
+				return
+			}
+			if err != nil {
+				log.Fatalln(err)
+			}
+			log.Println("Greeting received : ", res.GetMessage())
+		}
+	}()
+	<-done
 }

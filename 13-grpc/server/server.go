@@ -2,6 +2,7 @@ package main
 
 import (
 	"context"
+	"fmt"
 	"grpc-app/proto"
 	"io"
 	"log"
@@ -65,6 +66,31 @@ func (s *server) Prime(req *proto.PrimeRequest, stream proto.AppService_PrimeSer
 			}
 			stream.Send(res)
 		}
+	}
+	return nil
+}
+
+//bidirectional streaming
+func (s *server) Greet(stream proto.AppService_GreetServer) error {
+	log.Println("Greet: start")
+	for {
+		req, err := stream.Recv()
+		if err == io.EOF {
+			return nil
+		}
+		if err != nil {
+			return err
+		}
+		greeting := req.GetGreeting()
+		firstName := greeting.GetFirstName()
+		lastName := greeting.GetLastName()
+		log.Println("Received : ", firstName, lastName)
+
+		res := &proto.GreetResponse{
+			Message: fmt.Sprintf("Hello %s %s", firstName, lastName),
+		}
+		stream.Send(res)
+		time.Sleep(1000 * time.Millisecond)
 	}
 	return nil
 }
