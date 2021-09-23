@@ -9,6 +9,7 @@ RUN mkdir -p /grpc-chat/proto
 
 WORKDIR /grpc-chat
 
+COPY ./proto/service_grpc.pb.go /grpc-chat/proto
 COPY ./proto/service.pb.go /grpc-chat/proto
 COPY ./server/server.go /grpc-chat
 
