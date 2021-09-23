@@ -299,10 +299,15 @@ Tests
     assertion and mocking library
         github.com/stretchr/testify
         github.com/stretchr/testify/assert
-        
+        github.com/stretchr/testify/mock
+
+
     to generate mocks
         go get github.com/vektra/mockery
         mockery --all --keeptree
 
+
+To detect race conditions
+    go run --race demo-03.go
 
     
