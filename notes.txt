@@ -292,3 +292,17 @@ Communication Patterns
     3. Server Streaming
     4. Bidirectional Streaming
     
+Tests
+    to run the tests
+        go test ./... -v
+
+    assertion and mocking library
+        github.com/stretchr/testify
+        github.com/stretchr/testify/assert
+        
+    to generate mocks
+        go get github.com/vektra/mockery
+        mockery --all --keeptree
+
+
+    

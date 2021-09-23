@@ -28,7 +28,7 @@ func CreateATodo(c *gin.Context) {
 	if err != nil {
 		c.AbortWithStatus(http.StatusNotFound)
 	} else {
-		c.JSON(http.StatusOK, todo)
+		c.JSON(http.StatusCreated, todo)
 	}
 }
 
