@@ -30,6 +30,7 @@ func main() {
 	if err != nil {
 		log.Fatalf("failed to listen: %v", err)
 	}
+	defer listener.Close()
 	grpcServer := grpc.NewServer()
 	proto.RegisterAppServiceServer(grpcServer, &server{})
 	e := grpcServer.Serve(listener)
