@@ -9,6 +9,8 @@ import (
 	"grpc-app/proto"
 
 	"google.golang.org/grpc"
+	"google.golang.org/grpc/codes"
+	"google.golang.org/grpc/status"
 )
 
 func main() {
@@ -21,7 +23,8 @@ func main() {
 	//doRequestResponse(clientConn)
 	//doClientStreaming(clientConn)
 	//doServerStreaming(clientConn)
-	doBiDiStreaming(clientConn)
+	//doBiDiStreaming(clientConn)
+	doRequestResponseWithTimeout(clientConn)
 }
 
 func doRequestResponse(clientConn proto.AppServiceClient) {
@@ -140,4 +143,23 @@ func doBiDiStreaming(clientConn proto.AppServiceClient) {
 		}
 	}()
 	<-done
+}
+
+func doRequestResponseWithTimeout(client proto.AppServiceClient) {
+	req := &proto.AddRequest{X: 100, Y: 200}
+	timeoutContext, cancel := context.WithTimeout(context.Background(), time.Second*2)
+	defer cancel()
+	resp, err := client.Add(timeoutContext, req)
+	if err != nil {
+		statusErr, ok := status.FromError(err)
+		if ok {
+			if statusErr.Code() == codes.DeadlineExceeded {
+				log.Fatalln("Timeout was hit! Deadline Exceeded")
+			} else {
+				log.Fatalln(err)
+			}
+		}
+	} else {
+		log.Println("Add Result:", resp.GetResult())
+	}
 }
