@@ -202,3 +202,81 @@ IO
     ioutil package
     bufio package
         
+
+GRPC
+
+    DCOM
+    MTS
+
+    .NET Remoting
+    RMI (Java)
+
+    CORBA
+
+    Web
+        IP Address & URL
+        TCP
+        HTTP
+        XML
+
+        Web Services
+            XML
+            SOAP (Simple Object Access Protocol)
+            WSDL (Web Service Description Language)
+        
+        REST services
+        Data as a resource
+            JSON
+            URL
+                http://myapp.com/products
+                http://myapp.com/products/P101
+                http://myapp.com/categories/stationary/products
+
+            OPERATIONS
+                http verbs
+                    GET
+                    POST
+                    PUT
+                    PATCH
+                    DELETE
+                    HEAD
+                    OPTIONS
+
+            RESPONSES
+                http status codes
+                200 OK
+                201 Created
+                202 Accepted
+                204 No Content
+                302 Found
+                304 Not Modified
+                400 Bad Request
+                401 Unauthorized
+                403 Forbidden
+                404 Not Found
+                500 Internal Server Error
+
+    Web
+        Advantages
+            Tech agnostic
+            Text based
+
+        Disadvantages
+            payload size
+            HTTP Stateless
+            ONLY request & response was possible
+            Realtime updates were very difficult
+
+
+    
+Read Optimized append only
+Transactional
+Read optimized (allow updates)
+Analytical
+Realtime
+
+GRPC
+    serialization is using protocol buffer
+
+
+
