@@ -2,6 +2,7 @@ package main
 
 import (
 	"context"
+	"io"
 	"log"
 	"time"
 
@@ -18,7 +19,8 @@ func main() {
 	defer client.Close()
 	clientConn := proto.NewAppServiceClient(client)
 	//doRequestResponse(clientConn)
-	doClientStreaming(clientConn)
+	//doClientStreaming(clientConn)
+	doServerStreaming(clientConn)
 }
 
 func doRequestResponse(clientConn proto.AppServiceClient) {
@@ -57,4 +59,26 @@ func doClientStreaming(clientConn proto.AppServiceClient) {
 		log.Fatalln(e)
 	}
 	log.Println("Average : ", res.Result)
+}
+
+func doServerStreaming(clientConn proto.AppServiceClient) {
+	req := &proto.PrimeRequest{
+		Start: 3,
+		End:   100,
+	}
+	stream, err := clientConn.Prime(context.Background(), req)
+	if err != nil {
+		log.Fatalln(err)
+	}
+	for {
+		res, err := stream.Recv()
+		if err == io.EOF {
+			log.Println("All prime numbers received")
+			return
+		}
+		if err != nil {
+			log.Fatalln(err)
+		}
+		log.Println("Prime number received : ", res.GetResult())
+	}
 }
